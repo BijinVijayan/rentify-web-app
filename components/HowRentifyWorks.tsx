@@ -25,14 +25,14 @@ const steps: HowItWorksStep[] = [
 
 export default function HowRentifyWorks() {
     return (
-        <section className="bg-[#f5f8fc] py-8 sm:py-14 px-5">
+        <section className="bg-slate-50 py-8 sm:py-14 px-5">
             <div className="max-w-6xl mx-auto">
                 <h2 className="mb-10 text-2xl sm:text-3xl font-bold text-center text-[#273144]">How Rentify Works</h2>
                 <div className="grid gap-5 sm:gap-8 grid-cols-1 md:grid-cols-3">
                     {steps.map((step, idx) => (
                         <div
                             key={step.title}
-                            className="bg-white rounded-lg shadow px-8 py-10 flex flex-col items-center text-center
+                            className="bg-white rounded-lg border border-slate-200 px-8 py-10 flex flex-col items-center text-center
                              transition"
                         >
                             <div className={"bg-primary-color p-2.5 rounded-full"}>

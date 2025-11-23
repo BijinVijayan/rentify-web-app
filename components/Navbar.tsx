@@ -11,7 +11,7 @@ const navLinks = [
     { name: "Home", href: "/" },
     { name: "Properties", href: "/properties" },
     { name: "Neighborhoods", href: "/neighborhoods" },
-    { name: "Become a Host", href: "/host" },
+    { name: "Become a Host", href: "/be-a-host" },
 ];
 
 export default function Navbar() {
