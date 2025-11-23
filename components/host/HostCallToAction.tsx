@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from "next/link";
 
 const HostCallToAction = () => {
     return (
@@ -7,7 +8,7 @@ const HostCallToAction = () => {
                 <div className="flex flex-col gap-3 sm:gap-5 items-center justify-center max-w-2xl text-center mx-auto`}">
                     <h3 className={"text-2xl sm:text-3xl md:text-5xl text-white font-semibold"}>Ready to start hosting</h3>
                     <p className={"text-white max-sm:text-sm"}>Join thousands of hosts and turn your extra space into your next opportunity. It only takes a few steps to get started.</p>
-                    <button className={"text-white mt-3 text-sm bg-orange-400 px-4 py-2 rounded-lg font-semibold"}>Become a Host Today</button>
+                    <Link href={"/signin"} className={"text-white mt-3 text-sm bg-orange-400 px-4 py-2 rounded-lg font-semibold"}>Become a Host Today</Link>
                 </div>
                 </div>
         </div>

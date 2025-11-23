@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import {MdOutlineMailOutline} from "react-icons/md";
+import Image from "next/image";
 
 export default function LoginHost() {
     const [isLoading, setIsLoading] = useState(false);
@@ -37,10 +38,14 @@ export default function LoginHost() {
 
                     {/* Header */}
                     <div className="mb-10">
-                        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                            Rentify
-                        </h1>
-                        <p className="text-gray-500 text-lg leading-relaxed">
+                        <div className={"flex items-center justify-center mb-4"}>
+                            <Image src={"/icons/renfity icon.png"} alt={"logo"} width={1000} height={1000} className={"w-8 sm:w-10 mr-2"} />
+                            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
+                                Rentify
+                            </h1>
+                        </div>
+
+                        <p className="text-gray-500 sm:text-lg leading-relaxed">
                             Join Rentify to list your property and manage bookings.
                         </p>
                     </div>

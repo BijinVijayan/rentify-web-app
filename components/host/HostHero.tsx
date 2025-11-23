@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from "next/link";
 
 const HostHero = () => {
     return (
@@ -14,10 +15,11 @@ const HostHero = () => {
                             our community of hosts and enjoy the flexibility, safety, and financial opportunity of sharing
                             your property on Rentify.</h2>
                     </div>
-                    <button
+                    <Link
+                        href={"/signin"}
                         className="flex min-w-[84px] bg-orange-500 max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-semibold leading-normal tracking-[0.015em] hover:bg-accent/90 transition-colors">
                         <span className="truncate">Get Started</span>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
