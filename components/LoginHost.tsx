@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import {MdOutlineMailOutline} from "react-icons/md";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function LoginHost() {
     const [isLoading, setIsLoading] = useState(false);
@@ -93,9 +94,9 @@ export default function LoginHost() {
                     <div className="mt-8 space-y-8">
                         <div className="text-gray-500 font-medium">
                             Don&#39;t have an account yet?{' '}
-                            <a href="#" className="text-[#00695C] hover:text-[#004D40] hover:underline font-bold inline-flex items-center gap-1 transition-all">
+                            <Link href="/create-host" className="text-[#00695C] hover:text-[#004D40] hover:underline font-bold inline-flex items-center gap-1 transition-all">
                                 Get started as a host!
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="text-xs text-gray-400 leading-relaxed max-w-xs mx-auto">

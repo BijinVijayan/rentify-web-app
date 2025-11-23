@@ -87,7 +87,7 @@ export default function FaqSection() {
                                 className="w-full text-left flex justify-between items-center focus:outline-none"
                             >
                                 <span className="text-bluedark2 pr-5 sm:pr-8">{faq.question}</span>
-                                <span className="flex-shrink-0">
+                                <span className="flex-shrink-0 cursor-pointer">
                   {openItem === faq.id ? (
                       <svg
                           width="25"

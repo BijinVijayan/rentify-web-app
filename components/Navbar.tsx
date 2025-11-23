@@ -36,7 +36,7 @@ export default function Navbar() {
 
                 </div>
                 <div className={"hidden md:flex items-center justify-center text-sm gap-6"}>
-                    <Link href="/" className="border px-4 py-1.5 rounded-md text-primary-color border-primary-color hover:bg-blue-50 transition">
+                    <Link href="/signin" className="border px-4 py-1.5 rounded-md text-primary-color border-primary-color hover:bg-blue-50 transition">
                         Log in
                     </Link>
                     {/*<Link href="/" className="bg-primary-color px-4 py-1.5 rounded-md text-white hover:bg-primary-color/90 transition">*/}
@@ -80,7 +80,7 @@ export default function Navbar() {
                                     {link.name}
                                 </Link>
                             ))}
-                            <Link href="/" onClick={() => setMobileOpen(false)}
+                            <Link href="/signin" onClick={() => setMobileOpen(false)}
                                   className="mt-4   border px-4 py-2 text-center font-medium rounded-md text-primary-color border-primary-color hover:bg-blue-50 transition">
                                 Log in
                             </Link>
