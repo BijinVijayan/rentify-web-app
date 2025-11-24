@@ -3,6 +3,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import { BsPerson, BsCloudUpload, BsList, BsX } from 'react-icons/bs';
 import Image from "next/image";
+import Link from "next/link";
 
 type FormData = {
     fullName: string;
@@ -324,12 +325,12 @@ export default function CreateHostProfile() {
 
                     {/* Footer Actions */}
                     <div className="mt-8 flex justify-end">
-                        <button
+                        <Link href={"/dashboard"}
                             onClick={handleSubmit}
                             className="w-full md:w-auto bg-blue-400 hover:bg-blue-500 text-white font-medium px-8 py-3 rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-95"
                         >
                             Save Host Profile
-                        </button>
+                        </Link>
                     </div>
 
                 </div>
