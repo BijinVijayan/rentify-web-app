@@ -1,4 +1,5 @@
 import { Icons } from "@/data/Icons";
+import Link from "next/link";
 
 interface HeaderProps {
     onMenuClick?: () => void;
@@ -29,10 +30,10 @@ export default function Header({ onMenuClick }: HeaderProps) {
             </div>
 
             <div className="flex items-center gap-4">
-                <button className="hidden sm:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-blue-200">
+                <Link href={"/add-property"} className="hidden sm:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm shadow-blue-200">
                     <Icons.Plus className="w-4 h-4" />
                     Add New Property
-                </button>
+                </Link>
                 <button className="relative p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors">
                     <Icons.Bell />
                     <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>

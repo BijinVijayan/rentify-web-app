@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
+import {Toaster} from "react-hot-toast";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,6 +26,28 @@ export default function RootLayout({
         className={`${inter.variable} font-inter antialiased relative`}
       >
         {children}
+        <Toaster
+            position="top-right" // You can set position: 'top-center', 'bottom-left', etc.
+            reverseOrder={false}
+            toastOptions={{
+                style: {
+                    fontSize: '14px',
+                    padding: '16px',
+                },
+                success: {
+                    iconTheme: {
+                        primary: '#10B981', // Emerald green
+                        secondary: 'white',
+                    },
+                },
+                error: {
+                    iconTheme: {
+                        primary: '#EF4444', // Red
+                        secondary: 'white',
+                    },
+                },
+            }}
+        />
       </body>
     </html>
   );
