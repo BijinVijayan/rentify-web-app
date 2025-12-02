@@ -7,7 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function GET() {
     try {
-        console.log("1. API: /api/hosts/check called");
+        // console.log("1. API: /api/hosts/check called");
 
         await connectDB();
 
