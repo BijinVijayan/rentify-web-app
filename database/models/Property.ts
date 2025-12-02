@@ -1,14 +1,22 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
+// Interface for Amenities Group Structure
+interface AmenityGroup {
+    group: string;
+    items: {
+        key: string;
+        label: string;
+        icon: string;
+    }[];
+}
+
 export interface IProperty extends Document {
     hostId: mongoose.Types.ObjectId;
     title: string;
     description: string;
     propertyType: string;
-
-    // Listing Specifics
     listingType: "RENT" | "SALE";
-    rentFrequency?: ("MONTHLY" | "YEARLY")[]; // If Rent, which frequencies are offered
+    rentFrequency?: ("MONTHLY" | "YEARLY")[];
 
     // Pricing
     price: {
@@ -16,6 +24,7 @@ export interface IProperty extends Document {
         monthly?: number;
         yearly?: number;
         securityDeposit?: number;
+        maintenanceFee?: number; // <--- ADDED HERE
     };
     currency: string;
 
@@ -34,7 +43,7 @@ export interface IProperty extends Document {
     };
 
     images: string[];
-    amenities: string[]; // Store keys like 'swimming_pool', 'wifi'
+    amenities: AmenityGroup[];
     status: "Draft" | "Pending" | "Published";
 }
 
@@ -44,7 +53,6 @@ const PropertySchema = new Schema<IProperty>(
         title: { type: String, required: true },
         description: String,
         propertyType: { type: String, default: "Apartment" },
-
         listingType: { type: String, enum: ["RENT", "SALE"], required: true },
         rentFrequency: [{ type: String, enum: ["MONTHLY", "YEARLY"] }],
 
@@ -53,6 +61,7 @@ const PropertySchema = new Schema<IProperty>(
             monthly: Number,
             yearly: Number,
             securityDeposit: Number,
+            maintenanceFee: Number, // <--- ADDED HERE
         },
         currency: { type: String, default: "AED" },
 
@@ -69,7 +78,13 @@ const PropertySchema = new Schema<IProperty>(
         },
 
         images: [String],
-        amenities: [String],
+
+        amenities: [
+            {
+                group: String,
+                items: [{ key: String, label: String, icon: String }]
+            }
+        ],
 
         status: { type: String, default: "Pending" },
     },
