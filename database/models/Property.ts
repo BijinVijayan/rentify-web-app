@@ -24,7 +24,7 @@ export interface IProperty extends Document {
         monthly?: number;
         yearly?: number;
         securityDeposit?: number;
-        maintenanceFee?: number; // <--- ADDED HERE
+        maintenanceFee?: number;
     };
     currency: string;
 

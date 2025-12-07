@@ -1,17 +1,21 @@
 import React from "react";
 
+// --- UI / COMPONENT TYPES ---
+
 export type Currency = 'USD' | 'AED' | 'INR' | 'EUR' | 'GBP' | 'JPY' | 'CAD';
 
 export type Amenity = {
     name: string;
-    icon: React.ReactNode;
+    icon: string | React.ReactNode;
 };
 
 export type AmenityGroupName =
     | "Building"
     | "Health and Fitness"
     | "Security"
-    | "Technologies";
+    | "Technology" // Fixed typo from 'Technologies' to match common singular usage if needed
+    | "Community"
+    | string;      // Allow dynamic groups from DB
 
 export type AmenityGroup = {
     group: AmenityGroupName;
@@ -22,18 +26,19 @@ export type Host = {
     id: string;
     name: string;
     avatarUrl: string;
-    memberSince: string;
-};
-
-export type LocationMapProps = {
-    location: LocationType;
+    memberSince?: string;
 };
 
 export type LocationType = {
-    lat: number,
-    lng: number,
-    formattedAddress: string,
-    location?: LocationType
+    lat: number;
+    lng: number;
+    formattedAddress: string;
+    city?: string;
+    country?: string;
+};
+
+export type LocationMapProps = {
+    location: ApiLocation;
 };
 
 export type Review = {
@@ -45,11 +50,10 @@ export type Review = {
 };
 
 export type ReviewsSectionProps = {
-    rating: number;
-    reviewCount: number;
-    reviews: Review[];
+    rating?: number;
+    reviewCount?: number;
+    reviews?: Review[];
 };
-
 
 export type PropertyDetailsType = {
     id: string;
@@ -71,10 +75,12 @@ export type PropertyDetailsType = {
     host: Host;
     description: string;
     amenities: AmenityGroup[];
-    location: LocationType;
-    rating: number;
-    reviewCount: number;
-    reviews: Review[];
+    location: ApiLocation;
+
+    // Modified to be optional
+    rating?: number;
+    reviewCount?: number;
+    reviews?: Review[];
 };
 
 export type PropertyCardType = {
@@ -88,9 +94,11 @@ export type PropertyCardType = {
     beds: number;
     baths: number;
     sqft: number;
+    imageUrl: string;
+
+    // Modified to be optional
     rating?: number;
     reviewCount?: number;
-    imageUrl: string;
 };
 
 export type PropertyCardProps = {
@@ -98,4 +106,70 @@ export type PropertyCardProps = {
     onClickAction?: (id: string) => void;
     className?: string;
 };
+// --- API RESPONSE TYPES (DB SCHEMA) ---
+// Use these when fetching data in your API routes or Server Components
 
+export interface ApiAmenityItem {
+    _id: string;
+    key: string;
+    label: string;
+    icon: string;
+}
+
+export interface ApiAmenityGroup {
+    _id: string;
+    group: string;
+    items: ApiAmenityItem[];
+}
+
+export interface ApiHostDetails {
+    _id: string;
+    fullName: string;
+    avatarUrl: string;
+    memberSince: string;
+}
+
+export interface ApiLocation {
+    address: string;
+    city: string;
+    country: string;
+    lat: number;
+    lng: number;
+}
+
+export interface ApiPrice {
+    sale?: number;
+    monthly?: number;
+    yearly?: number;
+    maintenanceFee?: number;
+    securityDeposit?: number;
+}
+
+export interface ApiProperty {
+    _id: string;
+    title: string;
+    description: string;
+    listingType: "RENT" | "SALE";
+    propertyType: string;
+    status: string;
+    currency: string;
+    // Nested Objects
+    price: ApiPrice;
+    location: ApiLocation;
+    host: ApiHostDetails;
+    // Stats
+    beds: number;
+    baths: number;
+    sqft: number;
+    // Arrays
+    images: string[];
+    amenities: ApiAmenityGroup[];
+    rentFrequency?: string[];
+    // Timestamps
+    createdAt: string;
+    updatedAt: string;
+    // review
+    rating?: number;
+    reviewCount?: number;
+    reviews?: Review[];
+}

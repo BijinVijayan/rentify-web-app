@@ -15,7 +15,10 @@ interface Property {
     title: string;
     listingType: "RENT" | "SALE";
     price: { sale?: number; monthly?: number };
-    currency: string;beds: number; baths: number; sqft: number;
+    currency: string;
+    beds: number;
+    baths: number;
+    sqft: number;
     location: { address: string; city: string };
     status: string;
     images: string[];
@@ -138,14 +141,14 @@ export default function PropertiesPage() {
                     <h1 className="text-3xl font-bold text-gray-900">Properties</h1>
                     <p className="text-gray-500 mt-1">Manage all your rental and sale listings.</p>
                 </div>
-                <Link href="/add-property" className="px-5 py-2.5 rounded-lg font-medium text-sm border border-gray-200 transition-colors flex items-center gap-2">
+                <Link href="/add-property" className="px-5 py-2.5 rounded-lg font-medium text-sm border border-gray-200 hover:bg-gray-100 transition-colors flex items-center gap-2">
                     <Plus size={18} />
                     Add New Property
                 </Link>
             </div>
 
             {/* --- CONTROLS --- */}
-            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-6">
+            <div className="bg-white p-4 rounded-xl border border-gray-200 mb-6">
                 <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
 
                     {/* Search */}
@@ -162,7 +165,7 @@ export default function PropertiesPage() {
 
                     {/* View Toggle & Filter Btn */}
                     <div className="flex items-center gap-3 w-full md:w-auto">
-                        <button className="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-gray-700 text-sm font-medium transition-colors">
+                        <button className="flex cursor-pointer items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-gray-700 text-sm font-medium transition-colors">
                             <Filter size={18} />
                             <span>Filters</span>
                         </button>
@@ -183,10 +186,10 @@ export default function PropertiesPage() {
                         <button
                             key={tab}
                             onClick={() => { setActiveFilter(tab); setCurrentPage(1); }}
-                            className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                            className={`px-4 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
                                 activeFilter === tab
                                     ? "bg-blue-100 text-blue-700"
-                                    : "text-gray-600 hover:bg-gray-100"
+                                    : "text-gray-600 hover:bg-gray-100 bg-gray-50"
                             }`}
                         >
                             {tab}
@@ -234,7 +237,7 @@ export default function PropertiesPage() {
                 <>
                     {/* LIST VIEW (Table - Desktop/Tablet) */}
                     {viewMode === "list" && (
-                        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hidden md:block">
+                        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hidden md:block">
                             <table className="w-full text-left border-collapse">
                                 <thead>
                                 <tr className="bg-gray-50 border-b border-gray-200 text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -370,7 +373,7 @@ export default function PropertiesPage() {
                     </div>
 
                     {/* --- PAGINATION --- */}
-                    <div className="flex flex-col md:flex-row justify-between items-center mt-8 pt-6 border-t border-gray-200 text-sm text-gray-500 gap-4">
+                    <div className="px-2 flex flex-col md:flex-row justify-between items-center mt-8 pt-6 text-sm text-gray-500 gap-4">
                         <span>Showing <span className="font-bold text-gray-900">{((currentPage - 1) * 10) + 1}-{Math.min(currentPage * 10, totalItems)}</span> of {totalItems}</span>
 
                         <div className="flex items-center gap-2">

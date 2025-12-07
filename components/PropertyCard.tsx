@@ -18,7 +18,6 @@ export default function PropertyCard({ property, onClickAction, className }: Pro
     const {
         id,
         city,
-        state,
         country,
         title,
         pricePerMonth,
@@ -30,8 +29,6 @@ export default function PropertyCard({ property, onClickAction, className }: Pro
         reviewCount,
         imageUrl,
     } = property;
-
-    const location = [city, state].filter(Boolean).join(', ') || country || '';
 
     const card = (
         <article
@@ -57,7 +54,7 @@ export default function PropertyCard({ property, onClickAction, className }: Pro
             <div className="flex flex-col flex-1 p-4 max-sm:pb-2">
                 <p className="flex items-center gap-1 text-sm text-gray-text">
                     <IoLocationOutline />
-                    {location}
+                    {city}, {country}
                 </p>
                 <h3 className="mt-1 text-lg font-bold text-primary-text">
                     {title}

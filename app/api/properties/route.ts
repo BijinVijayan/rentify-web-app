@@ -26,7 +26,7 @@ export async function GET(request: Request) {
             // === PUBLIC MODE ===
             // No Auth required.
             // STRICT RULE: Only show "Published" (or Active) properties
-            query.status = "Published"; // Or whatever your 'Active' status string is in DB
+            // query.status = "Published";
 
             // Note: Public users shouldn't see 'Drafts' or 'Pending'
         } else {

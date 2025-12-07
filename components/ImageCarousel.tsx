@@ -7,10 +7,10 @@ type Props = {
     altPrefix?: string;
 };
 
-export default function ImageCarousel({ images, altPrefix = "Apartment image" }: Props) {
+export default function ImageCarousel({ images, altPrefix = "" }: Props) {
     const [active, setActive] = useState(0);
     const [direction, setDirection] = useState<"left" | "right" | "">(""); // For slide animate
-
+    // console.log("images",images)
     // Swipe tracking
     let startX = 0;
     function handleTouchStart(e: TouchEvent) {

@@ -1,6 +1,6 @@
 "use client"
 
-import {PropertyDetailsType} from "@/types/property";
+import {ApiProperty} from "@/types/property";
 import {
     AmenitiesGrid,
     HostInfoCard,
@@ -15,7 +15,7 @@ import LocationMap from "@/components/LocationMap";
 import ImageCarousel from "@/components/ImageCarousel";
 
 type Props = {
-    property: PropertyDetailsType;
+    property: ApiProperty;
 };
 
 export default function PropertyDetails({ property }: Props) {
@@ -26,12 +26,10 @@ export default function PropertyDetails({ property }: Props) {
                 <ImageCarousel images={property.images} />
             </div>
 
-
-            <PropertySummary title={property.title} address={property.address} />
-
+            <PropertySummary title={property.title} address={property.location.address} />
             {/* Image gallery */}
             <div className="hidden sm:block my-8">
-                <PropertyImageGallery images={property.images} thumbnailUrls={property.thumbnailUrls} />
+                <PropertyImageGallery images={property.images} thumbnailUrls={property.images} />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:px-4 max-sm:my-4">
@@ -40,7 +38,7 @@ export default function PropertyDetails({ property }: Props) {
                     {/* Host & basic info row */}
                     <div className="mb-4">
                         <div className="flex flex-col items-start gap-2 sm:gap-3">
-                            <span className="text-primary-text sm:text-xl font-semibold">Property hosted by {property.host.name}</span>
+                            <span className="text-primary-text sm:text-xl font-semibold">Property hosted by {property.host.fullName}</span>
                             <div className="flex items-center text-primary-text text-sm gap-6">
                                 <div className={"flex items-center justify-center gap-2"}> <MdBed />{ property.beds} bedroom</div>
                                 <div className={"flex items-center justify-center gap-2"}><BiSolidBath /> {property.baths} bath</div>
@@ -62,11 +60,11 @@ export default function PropertyDetails({ property }: Props) {
                 {/* Sidebar pricing/action/host */}
                 <div className="md:col-span-1 sm:px-2">
                     <PricingBox
-                        pricePerMonth={property.pricePerMonth}
+                        pricePerMonth={property.price.monthly  || 0}
                         currency={property.currency}
-                        forRent={property.forRent}
-                        securityDeposit={property.securityDeposit}
-                        maintenance={property.maintenance}
+                        listingType ={property.listingType}
+                        securityDeposit={property.price.securityDeposit}
+                        maintenance={property.price.maintenanceFee}
                         onBook={() => {/* Handle booking */}}
                         onScheduleTour={() => {/* Handle scheduling tour */}}
                     />
@@ -80,20 +78,24 @@ export default function PropertyDetails({ property }: Props) {
             <section className="mt-10">
                 <div className={"max-sm:px-4"}>
                     <h3 className="text-lg font-semibold sm:mb-2">Location Map</h3>
-                    <div className="mb-4 text-sm text-gray-500">{property.location.formattedAddress}</div>
+                    <div className="mb-4 text-sm text-gray-500">{property.location.address}</div>
                 </div>
 
                 <LocationMap location={property.location} />
             </section>
 
             {/* Reviews */}
-            <section className="mt-10 max-sm:px-4">
-                <ReviewsSection
-                    rating={property.rating}
-                    reviewCount={property.reviewCount}
-                    reviews={property.reviews}
-                />
-            </section>
+            {property.reviews?.length && property.reviews?.length != 0 &&
+                (
+                    <section className="mt-10 max-sm:px-4">
+                        <ReviewsSection
+                            rating={property.rating}
+                            reviewCount={property.reviewCount}
+                            reviews={property.reviews}
+                        />
+                    </section>
+                )}
+
         </div>
     )
 }
