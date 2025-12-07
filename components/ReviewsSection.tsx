@@ -28,11 +28,11 @@ export default function ReviewsSection({ rating, reviewCount, reviews }: Reviews
         <section>
             <div className="mb-5 flex items-center gap-2">
                 <FaStar className="text-yellow-400" />
-                <span className="font-semibold sm:text-lg">{rating.toFixed(2)}</span>
+                <span className="font-semibold sm:text-lg">{rating?.toFixed(2)}</span>
                 <span className="text-gray-500 text-sm sm:text-base font-semibold">· {reviewCount} Reviews</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {reviews.map((r, idx) => (
+                {reviews?.map((r, idx) => (
                     <div key={idx} className="flex items-start gap-4 rounded-lg p-0">
                         <Image
                             src={r.avatarUrl}
