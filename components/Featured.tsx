@@ -53,7 +53,7 @@ async function getProperties(): Promise<PropertyCardType[]> {
 const Featured = async () => {
     // Await the data directly
     const properties = await getProperties();
-
+    console.log("property api result",properties);
     // If API fails or returns empty, hide the section
     if (!properties || properties.length === 0) {
         return null;

@@ -9,8 +9,8 @@ import {IoIosClose} from "react-icons/io";
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Properties", href: "/properties" },
-    { name: "Neighborhoods", href: "/neighborhoods" },
+    { name: "Properties", href: "/" },
+    { name: "Neighborhoods", href: "/" },
     { name: "Become a Host", href: "/be-a-host" },
 ];
 

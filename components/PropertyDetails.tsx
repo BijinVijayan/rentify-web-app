@@ -85,7 +85,7 @@ export default function PropertyDetails({ property }: Props) {
             </section>
 
             {/* Reviews */}
-            {property.reviews?.length && property.reviews?.length != 0 &&
+            {property.reviews?.length !== 0 &&
                 (
                     <section className="mt-10 max-sm:px-4">
                         <ReviewsSection
