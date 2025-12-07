@@ -1,7 +1,7 @@
 import { LocationMapProps } from "@/types/property";
 
 export default function LocationMap({ location }: LocationMapProps) {
-    const { lat, lng, formattedAddress } = location;
+    const { lat, lng, address } = location;
 
     const delta = 0.02;
     const mUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${lng - delta}%2C${lat - delta}%2C${lng + delta}%2C${lat + delta}&layer=mapnik&marker=${lat}%2C${lng}`;
@@ -11,7 +11,7 @@ export default function LocationMap({ location }: LocationMapProps) {
             <iframe
                 src={mUrl}
                 style={{ width: "100%", height: "100%" }}
-                title={formattedAddress}
+                title={address}
                 allowFullScreen
             />
         </div>
