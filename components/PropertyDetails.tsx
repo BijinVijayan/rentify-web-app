@@ -64,7 +64,6 @@ export default function PropertyDetails({ property }: Props) {
                         pricePerYear={property.price.yearly  || 0}
                         frequency = {property.rentFrequency || []}
                         salePrice = {property.price.sale || 0}
-                        currency={property.currency}
                         listingType ={property.listingType}
                         securityDeposit={property.price.securityDeposit}
                         maintenance={property.price.maintenanceFee}
