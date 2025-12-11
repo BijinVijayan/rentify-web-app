@@ -33,7 +33,11 @@ async function getProperties(): Promise<PropertyCardType[]> {
             title: product.title,
             city: product.location.city,
             country: product.location.country,
-            pricePerMonth: product.price.monthly || product.price.sale || 0,
+            pricePerMonth: product.price.monthly || 0,
+            frequency: product.rentFrequency || [],
+            pricePerYear: product.price.yearly || 0,
+            listingType: product.listingType,
+            salePrice: product.price.sale || 0,
             currency: product.currency as Currency,
             beds: product.beds,
             baths: product.baths,
@@ -53,7 +57,7 @@ async function getProperties(): Promise<PropertyCardType[]> {
 const Featured = async () => {
     // Await the data directly
     const properties = await getProperties();
-    console.log("property api result",properties);
+    // console.log("property api result",properties);
     // If API fails or returns empty, hide the section
     if (!properties || properties.length === 0) {
         return null;

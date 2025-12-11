@@ -45,7 +45,7 @@ export default function Footer() {
             </div>
             <hr className="border-gray-500 my-6" />
             <div className="text-center text-gray-300 text-sm">
-                © 2023 Rentify. All rights reserved.
+                © 2025 Rentify. All rights reserved.
             </div>
         </footer>
     );

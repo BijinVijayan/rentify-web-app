@@ -61,6 +61,9 @@ export default function PropertyDetails({ property }: Props) {
                 <div className="md:col-span-1 sm:px-2">
                     <PricingBox
                         pricePerMonth={property.price.monthly  || 0}
+                        pricePerYear={property.price.yearly  || 0}
+                        frequency = {property.rentFrequency || []}
+                        salePrice = {property.price.sale || 0}
                         currency={property.currency}
                         listingType ={property.listingType}
                         securityDeposit={property.price.securityDeposit}

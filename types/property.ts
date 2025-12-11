@@ -90,11 +90,15 @@ export type PropertyCardType = {
     country?: string;
     title: string;
     pricePerMonth: number;
+    pricePerYear: number;
+    salePrice: number;
+    listingType: "RENT" | "SALE";
     currency: Currency;
     beds: number;
     baths: number;
     sqft: number;
     imageUrl: string;
+    frequency?: string[];
 
     // Modified to be optional
     rating?: number;

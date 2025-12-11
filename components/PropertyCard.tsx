@@ -21,6 +21,10 @@ export default function PropertyCard({ property, onClickAction, className }: Pro
         country,
         title,
         pricePerMonth,
+        pricePerYear,
+        frequency,
+        listingType,
+        salePrice,
         currency,
         beds,
         baths,
@@ -29,6 +33,8 @@ export default function PropertyCard({ property, onClickAction, className }: Pro
         reviewCount,
         imageUrl,
     } = property;
+
+    // console.log("property", property);
 
     const card = (
         <article
@@ -40,6 +46,10 @@ export default function PropertyCard({ property, onClickAction, className }: Pro
                 className
             )}
         >
+            {listingType === "RENT"
+                ? <span className="bg-blue-100 absolute z-10 top-1 left-1 text-blue-600 px-3 py-1.5 rounded-md text-xs font-semibold">For Rent</span>
+                : <span className="bg-green-100 absolute z-10 top-1 left-1 text-green-600 px-3 py-1.5 rounded-md text-xs font-semibold">For Sale</span>
+            }
             <div className="relative h-44 sm:h-40 w-full">
                 <Image
                     src={imageUrl}
@@ -62,7 +72,12 @@ export default function PropertyCard({ property, onClickAction, className }: Pro
                 {/* Spacer pushes the below to the bottom */}
                 <div className="mt-auto">
                     <p className="mt-1 text-primary-color font-bold">
-                        {formatPrice(pricePerMonth, currency)}/month
+                        {listingType === 'SALE'
+                            ? formatPrice(salePrice, currency)
+                            : frequency?.includes('YEARLY')
+                                ? `${formatPrice(pricePerYear, currency)}/year`
+                                : `${formatPrice(pricePerMonth, currency)}/month`
+                        }
                     </p>
 
                     <div className="mt-3 flex items-center gap-4 text-sm text-gray-text">
